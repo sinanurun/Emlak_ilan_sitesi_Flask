@@ -1,0 +1,58 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - İlan Güncelleme ve Silme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+  Emlak İlanı Güncelleme ve Silme Sayfasındasınız {{ yonetici.yonetici_adi_soyadi.upper() }}<br>
+    Aşağıda Sisteminize Kayıtlı Bulunan İlanların Listesini Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+            <div class="container">
+    <div class="alert alert-success" role="alert">
+    Kayıtlı Toplam İlan Sayısı : {{ ilanlar.__len__() }} <br>
+    </div>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">İlan İd</th>
+      <th scope="col">İlan Başlığı</th>
+      <th scope="col">İlan Resmi</th>
+      <th scope="col">İlan Tipi</th>
+        <th scope="col">İlan Semti</th>
+        <th scope="col">İlan Fiyatı</th>
+      <th scope="col">İlan Güncelle</th>
+      <th scope="col">İlan Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for ilan in ilanlar %}
+    <tr>
+      <th scope="row">{{ ilan.ilan_id}}</th>
+      <td>{{ ilan.ilan_baslik }}</td>
+      <td><img src="{{ ilan.ilan_foto_01}}" width="150" height="150"></td>
+      <th>{% if ilan.ilan_durum ==0 %}
+      Satılık{% else %}Kiralık
+      {% endif %}</th>
+    <td>{{ ilan.semt_id.semt_adi.upper()}}</td>
+    <td>{{ ilan.ilan_fiyati}}</td>
+      <th><a href= "/ilan_guncelle/{{ ilan.ilan_id}}" >İlan Güncelle</a></th>
+      <th><a href="/ilan_guncelle_sil/{{ ilan.ilan_id }}" >İlan Sil</a></th>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+
+</div>
+    {% endblock %}
+
+

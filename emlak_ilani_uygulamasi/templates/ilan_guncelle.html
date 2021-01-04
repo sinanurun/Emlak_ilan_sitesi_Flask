@@ -1,0 +1,88 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+Yönetici Sayfası - İlan Güncelleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+   İŞKUR İş ve İşçi İlan Sitesine İş İlanı Güncelleme Sayfasındasınız {{ yonetici.yonetici_adi_soyadi.upper() }}<br>
+    Aşağıdaki Formu Doldurarak İş İlanını Sistemde Güncelleyebilirsiniz
+{% endblock %}
+
+
+{% block icerik %}
+    
+    {% if mesaj %}
+
+    <div class="alert alert-success" role="alert">
+
+Güncelleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+ Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+
+
+</div>
+     {% else %}
+
+   <form action="/ilan_guncelle" method="post">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>İşyeri Seçiniz</label>
+            <select id="inputState" class="form-control" name="isyeri_id" >
+                {% for isveren in isyeri %}
+        <option value={{ isveren.isyeri_id }}
+        {% if isveren.isyeri_id==ilan.isyeri_id %}
+            selected
+                {% endif %}
+
+
+        >{{isveren.isyeri_adi }}</option>
+                {% endfor %}
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label >İlan Başlık</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="İlan Başlık" name="ilan_baslik" value="{{ ilan.ilan_baslik }}">
+    </div>
+          <div class="form-group col-md-4">
+      <label >Aidat Tarihi(YYYY-AA-GG)</label>
+
+      <input type="text" class="form-control" id="inputPassword4"  name="ilan_tarihi" value="{{ ilan.ilan_tarihi }}">
+
+
+
+    </div>
+
+
+
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputState">İlan Açıklama</label>
+
+        <textarea class="form-control" rows="3" id="comment" placeholder="İlan Açıklaması" name="ilan_icerik" >{{ ilan.ilan_icerik }}</textarea>
+    </div>
+
+          <div class="form-group col-md-4">
+      <label>İlan Durumu</label>
+            <select id="inputState" class="form-control" name="ilan_durum">
+
+        <option value="0">Aktif</option>
+                        <option value="1">Pasif</option>
+
+      </select>
+    </div>
+
+    <div class="form-group col-md-4" >
+  <br>
+        <input type="hidden" name="ilan_id" value={{ ilan.ilan_id }}>
+      <button type="submit" class="btn btn-primary" >İlan Ekle</button>
+    </div>
+  </div>
+
+</form>
+
+    {% endif %}
+{% endblock %}
+
+

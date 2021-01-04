@@ -1,0 +1,105 @@
+{% extends "index.html" %}
+
+{% block sayfa_baslik %}
+İlan Detayları Sayfası Listeleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+İlan Detaylarını Listeleme Sayfasındasınız<br>
+    Aşağıda Seçili İlanın Detaylarını Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+        <div class="container">
+
+                <table class="table">
+  <thead class="thead-dark ">
+    <tr>
+      <th scope="col">İlan Alan Bilgisi</th>
+      <th scope="col">İlan Alan İçeriği</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">İlan İd</th>
+      <td>{{ ilan.ilan_id}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan Başlık</th>
+      <td>{{ ilan.ilan_baslik}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan İçerik</th>
+      <td>{{ ilan.ilan_icerik}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan Tarihi</th>
+      <td>{{ ilan.ilan_tarihi}}</td>
+    </tr>
+                                        <tr>
+      <th scope="row">İlan Sorumlusu Adı</th>
+      <td>{{ ilan.isyeri.isyeri_adi }}
+      </td>
+    </tr>
+                                                            <tr>
+      <th scope="row">İlan Sorumlusu Telefon</th>
+      <td>{{ ilan.isyeri.isyeri_tel }}
+      </td>
+    </tr>
+
+{% if not ilan.ilan_foto_01=="" %}
+    <tr>
+      <th scope="row">İlan Fotoğraf - 1</th>
+        <td>Fotoğraf
+      </td>
+    </tr>
+{% endif %}
+{% if not ilan.ilan_foto_02=="" %}
+    <tr>
+      <th scope="row">İlan Fotoğraf - 2</th>
+        <td>Fotoğraf
+      </td>
+    </tr>
+{% endif %}
+{% if not ilan.ilan_foto_03=="" %}
+    <tr>
+      <th scope="row">İlan Fotoğraf - 3</th>
+        <td>Fotoğraf
+      </td>
+    </tr>
+{% endif %}
+
+{% if not ilan.ilan_foto_04=="" %}
+    <tr>
+      <th scope="row">İlan Fotoğraf - 4</th>
+        <td>Fotoğraf
+      </td>
+    </tr>
+{% endif %}
+{% if not ilan.ilan_foto_05=="" %}
+    <tr>
+      <th scope="row">İlan Fotoğraf - 5</th>
+        <td>Fotoğraf
+      </td>
+    </tr>
+{% endif %}
+
+
+
+
+    </table>
+
+
+</div>
+
+    {% endblock %}
+
+

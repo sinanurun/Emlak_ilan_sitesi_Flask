@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="emlak_sistemi">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.17">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="evtipi"/>
+    <table id="7" parent="2" name="ilan"/>
+    <table id="8" parent="2" name="semt"/>
+    <table id="9" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="10" parent="2" name="yonetici"/>
+    <column id="11" parent="6" name="evtipi_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="12" parent="6" name="evtipi_adi">
+      <Position>2</Position>
+      <DataType>VARCHAR(15)|0s</DataType>
+    </column>
+    <index id="13" parent="6" name="sqlite_autoindex_evtipi_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>evtipi_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="14" parent="6">
+      <ColNames>evtipi_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_evtipi_1</UnderlyingIndexName>
+    </key>
+    <key id="15" parent="6">
+      <ColNames>evtipi_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_evtipi_1</UnderlyingIndexName>
+    </key>
+    <column id="16" parent="7" name="ilan_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="7" name="ilan_baslik">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+    </column>
+    <column id="18" parent="7" name="ilan_icerik">
+      <Position>3</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="19" parent="7" name="ilan_tarihi">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="ilan_semt_id">
+      <Position>5</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="7" name="ilan_evtipi_id">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="7" name="ilan_turu">
+      <Position>7</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="7" name="ilan_goruntulenme_sayisi">
+      <Position>8</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="7" name="ilan_fiyati">
+      <Position>9</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="7" name="ilan_foto_01">
+      <Position>10</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="26" parent="7" name="ilan_foto_02">
+      <Position>11</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="27" parent="7" name="ilan_foto_03">
+      <Position>12</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="28" parent="7" name="ilan_foto_04">
+      <Position>13</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="29" parent="7" name="ilan_foto_05">
+      <Position>14</Position>
+      <DataType>VARCHAR(500)|0s</DataType>
+    </column>
+    <column id="30" parent="7" name="ilan_durum">
+      <Position>15</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="7" name="ilan_yonetici_id">
+      <Position>16</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="7" name="ilan_personel_id">
+      <Position>17</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="7" name="sqlite_autoindex_ilan_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ilan_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="7">
+      <ColNames>ilan_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_ilan_1</UnderlyingIndexName>
+    </key>
+    <key id="35" parent="7">
+      <ColNames>ilan_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_ilan_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="36" parent="7">
+      <ColNames>ilan_semt_id</ColNames>
+      <RefTableName>semt</RefTableName>
+      <RefColNames>semt_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="37" parent="7">
+      <ColNames>ilan_evtipi_id</ColNames>
+      <RefTableName>evtipi</RefTableName>
+      <RefColNames>evtipi_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="38" parent="7">
+      <ColNames>ilan_yonetici_id</ColNames>
+      <RefTableName>yonetici</RefTableName>
+      <RefColNames>yonetici_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="39" parent="7">
+      <ColNames>ilan_personel_id</ColNames>
+      <RefTableName>yonetici</RefTableName>
+      <RefColNames>yonetici_id</RefColNames>
+    </foreign-key>
+    <column id="40" parent="8" name="semt_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="8" name="semt_adi">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+    </column>
+    <index id="42" parent="8" name="sqlite_autoindex_semt_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>semt_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="8">
+      <ColNames>semt_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_semt_1</UnderlyingIndexName>
+    </key>
+    <key id="44" parent="8">
+      <ColNames>semt_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_semt_1</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="9" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="46" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="47" parent="9" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="48" parent="9" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="49" parent="9" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="50" parent="10" name="yonetici_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="10" name="yonetici_adi_soyadi">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="10" name="yonetici_tc">
+      <Position>3</Position>
+      <DataType>VARCHAR(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="10" name="yonetici_sifre">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="10" name="yonetici_email">
+      <Position>5</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+    </column>
+    <column id="55" parent="10" name="yonetici_tel">
+      <Position>6</Position>
+      <DataType>VARCHAR(12)|0s</DataType>
+    </column>
+    <column id="56" parent="10" name="yonetici_durum">
+      <Position>7</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="57" parent="10" name="sqlite_autoindex_yonetici_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>yonetici_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="58" parent="10" name="sqlite_autoindex_yonetici_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>yonetici_tc</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="10">
+      <ColNames>yonetici_id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_yonetici_1</UnderlyingIndexName>
+    </key>
+    <key id="60" parent="10">
+      <ColNames>yonetici_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_yonetici_1</UnderlyingIndexName>
+    </key>
+    <key id="61" parent="10">
+      <ColNames>yonetici_tc</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_yonetici_2</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

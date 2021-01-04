@@ -1,0 +1,120 @@
+{% extends "isveren.html" %}
+
+{% block sayfa_baslik %}
+Üye Sayfası - Üye Aidat Listeleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+İlan Detaylarını Listeleme Sayfasındasınız {{  isveren.isyeri_adi.upper() }}<br>
+    Aşağıda Seçili İlanın Detaylarını Bulabilirsiniz
+{% endblock %}
+
+
+
+
+
+
+
+    {% block icerik %}
+        <div class="container">
+
+                <table class="table">
+  <thead class="thead-dark ">
+    <tr>
+      <th scope="col">İlan Alan Bilgisi</th>
+      <th scope="col">İlan Alan İçeriği</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">İlan İd</th>
+      <td>{{ ilan.ilan_id}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan Başlık</th>
+      <td>{{ ilan.ilan_baslik}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan İçerik</th>
+      <td>{{ ilan.ilan_icerik}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan Tarihi</th>
+      <td>{{ ilan.ilan_tarihi}}</td>
+    </tr>
+                                        <tr>
+      <th scope="row">İlana Başvuranlar</th>
+      <td>
+          {% for kisiler in isciler %}
+          <a href="/isveren_basvuran_detay/{{ilan.ilan_id  }}/{{kisiler.isci_id  }}">{{kisiler.isci_adi_soyadi  }}</a>
+          <br>
+          {% endfor %}
+
+      </td>
+
+    </table>
+
+
+
+                <div class="container">
+
+                <table class="table">
+  <thead class="table-danger">
+    <tr>
+      <th scope="col">Başvuran Alan Bilgisi</th>
+      <th scope="col">Başvuran Alan İçeriği</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">İşçi İd</th>
+      <td>{{isci.isci_id}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İsci Adı Soyadı</th>
+      <td>{{isci.isci_adi_soyadi}}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İlan İşci Cinsiyet</th>
+      <td>{% if isci.isci_cinsiyet == 0 %}
+      Erkek
+          {% else %}
+          Kadın
+      {% endif %}</td>
+    </tr>
+                    <tr>
+      <th scope="row">İşçi Mezuniyet</th>
+      <td>{{ isci.mezun.mezun_adi}}</td>
+    </tr>
+                                    <tr>
+      <th scope="row">İşçi Askerlik</th>
+      <td>{{ isci.askerlik.askerlik_adi}}</td>
+    </tr>
+                                    <tr>
+      <th scope="row">İşçi Adres</th>
+      <td>{{ isci.isci_adres}}</td>
+    </tr>
+                                                    <tr>
+      <th scope="row">İşçi Telefon</th>
+      <td>{{ isci.isci_tel}}</td>
+    </tr>
+       <tr>
+      <th scope="row">İşçi Email</th>
+      <td>{{ isci.isci_email}}</td>
+    </tr>
+
+
+
+    </table>
+
+
+
+</div>
+
+    {% endblock %}
+
+

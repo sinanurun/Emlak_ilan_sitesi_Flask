@@ -1,0 +1,93 @@
+{% extends "yonetici.html" %}
+
+{% block sayfa_baslik %}
+    Yönetici Sayfası - İlan Ekleme Sayfası
+{% endblock %}
+
+{% block icerik_baslik %}
+    İlan Ekleme Sayfasındasınız Sayın : {{ yonetici.yonetici_adi_soyadi.upper() }}<br>
+    Aşağıdaki Formu Doldurarak Sisteme Yeni İlan Ekleyebilirsiniz
+{% endblock %}
+
+{% block icerik %}
+    <div class="container">
+        {% if mesaj %}
+            <div class="alert alert-success" role="alert">
+                İlan Ekleme İşleminiz {{ mesaj }} İle Sonuçlanmıştır<br>
+                Yukarıda Bulunan Menü Aracılığı ile Yapmak İstediğiniz İşlemi Seçebilirsiniz
+            </div>
+        {% else %}
+            <form action="ilan_ekle" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>İlan Başlığı</label>
+                      <input type="text" class="form-control" id="inputEmail4" placeholder="İlan Başlığı" name="ilan_baslik">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >İlan İçerik</label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="İlan İçeriği" name="ilan_icerik">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label >İlan Başlangıç Tarihi</label>
+                      <input type="text" class="form-control" id="inputPassword4" placeholder="YYYY-AA-GG" name="ilan_tarihi">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                         <label for="inputState">İlan Semti</label>
+                              <select id="inputState" class="form-control" name="ilan_semt_id">
+                                  {% for semt in semtler %}
+                                    <option value={{ semt.semt_id }}>{{ semt.semt_adi}}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                       <label for="inputState">Konut Tipi</label>
+                          <select id="inputState" class="form-control" name="ilan_evtipi_id">
+                              {% for evtipi in evtipleri %}
+                                <option value={{ evtipi.evtipi_id }}>{{ evtipi.evtipi_adi}}</option>
+                              {% endfor %}
+                          </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                         <label for="inputState">İlan Türü</label>
+                            <select id="inputState" class="form-control" name="ilan_turu">
+                                <option value=0>Satılık</option>
+                                <option value=1>Kiralık</option>
+                            </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                         <label for="inputState">İlan Fiyatı(.)</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="İlan Fiyatı" name="ilan_fiyati">
+                    </div>
+                </div>
+                <div class="form-row">
+                      <div class="form-group col-md-2" >
+                                <label for="inputState">İlan Resmi Ekle</label>
+                                <input type="file"  class="form-control" name="dosya01" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-2" >
+                                <label for="inputState">İlan Resmi Ekle -2</label>
+                                <input type="file"  class="form-control" name="dosya02" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-2" >
+                                <label for="inputState">İlan Resmi Ekle -3</label>
+                                <input type="file"  class="form-control" name="dosya03" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-2" >
+                                <label for="inputState">İlan Resmi Ekle -4</label>
+                                <input type="file"  class="form-control" name="dosya04" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-2" >
+                                <label for="inputState">İlan Resmi Ekle -5</label>
+                                <input type="file"  class="form-control" name="dosya05" placeholder="Resim Seçiniz">
+                      </div>
+                      <div class="form-group col-md-2" >
+                            <label for="inputState">İlan Ekle</label><br>
+                                <button type="submit" class="btn btn-primary" >İlan Ekle</button>
+                      </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
